@@ -1,12 +1,15 @@
 let calculateMonthlyPayment = function (principal, years, rate) {
+    // function level let needs to be initialized in the function not in the if statement
+    let monthlyRate = 0;
     if (rate) {
-        let monthlyRate = rate / 100 / 12;
+        monthlyRate = rate / 100 / 12;
     }
     let monthlyPayment = principal * monthlyRate / (1 - (Math.pow(1 / (1 + monthlyRate), years * 12)));
     return monthlyPayment;
 };
 
 document.getElementById('calcBtn').addEventListener('click', function () {
+    // these vars were changed to let without affecting execution
     let principal = document.getElementById("principal").value;
     let years = document.getElementById("years").value;
     let rate = document.getElementById("rate").value;
