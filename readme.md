@@ -2,18 +2,9 @@
 
 Start the tutorial [here](http://ccoenraets.github.io/es6-tutorial).
 
-This branch tracks [here](https://ccoenraets.github.io/es6-tutorial/destructuring/).
+This branch tracks [here](https://ccoenraets.github.io/es6-tutorial/arrow-functions/).
 
-Destructuring means deriving variables from objects and arrays.
+Arrow functions replace the function syntax with one that requires much less text.
 
 for example:
 
-`return {principal, years, rate, monthlyPayment, monthlyRate};`
-
-This is a shorthand for the following ECMAScript 5 syntax:
-
-`return { principal: principal, 
-         years: years, 
-         rate: rate, 
-         monthlyPayment: monthlyPayment, 
-         monthlyRate: monthlyRate };`

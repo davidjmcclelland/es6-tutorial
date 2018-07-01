@@ -1,3 +1,6 @@
+//es6 syntax
+//let calculateMonthlyPayment = (principal, years, rate) => {
+//es5 function syntax
 let calculateMonthlyPayment = function (principal, years, rate) {
     // function level let needs to be initialized in the function not in the if statement
     let monthlyRate = 0;
@@ -9,14 +12,37 @@ let calculateMonthlyPayment = function (principal, years, rate) {
     return {principal, years, rate, monthlyPayment, monthlyRate};
 };
 
+//es6 function syntax
+let calculateAmortization = (principal, years, rate) => {
+    let {monthlyRate, monthlyPayment} = calculateMonthlyPayment(principal, years, rate);
+    let balance = principal;
+    let amortization = [];
+    for (let y=0; y<years; y++) {
+        let interestY = 0;  //Interest payment for year y
+        let principalY = 0; //Principal payment for year y
+        for (let m=0; m<12; m++) {
+            let interestM = balance * monthlyRate;       //Interest payment for month m
+            let principalM = monthlyPayment - interestM; //Principal payment for month m
+            interestY = interestY + interestM;
+            principalY = principalY + principalM;
+            balance = balance - principalM;
+        }
+        amortization.push({principalY, interestY, balance});
+    }
+    return {monthlyPayment, monthlyRate, amortization};
+};
+
 document.getElementById('calcBtn').addEventListener('click', function () {
     // these vars were changed to let without affecting execution
     let principal = document.getElementById("principal").value;
     let years = document.getElementById("years").value;
     let rate = document.getElementById("rate").value;
-    //let monthlyPayment = calculateMonthlyPayment(principal, years, rate);
-    // move monthlyRate html assignment lower to use return object values
-    let {monthlyPayment, monthlyRate} = calculateMonthlyPayment(principal, years, rate);
+    //let {monthlyPayment, monthlyRate} = calculateMonthlyPayment(principal, years, rate);
+    //4 - arrow functions adds the amortization
+    let {monthlyPayment, monthlyRate, amortization} = calculateAmortization(principal, years, rate);
     document.getElementById("monthlyPayment").innerHTML = monthlyPayment.toFixed(2);
     document.getElementById("monthlyRate").innerHTML = (monthlyRate * 100).toFixed(2);
+    // for now pipe amortization to console
+    // this is known as an expression body
+    amortization.forEach(month => console.log(month));
 });
