@@ -2,13 +2,18 @@
 
 Start the tutorial [here](http://ccoenraets.github.io/es6-tutorial).
 
-This branch tracks [here](https://ccoenraets.github.io/es6-tutorial/let/).
+This branch tracks [here](https://ccoenraets.github.io/es6-tutorial/destructuring/).
 
-Replacing var with let potentially changes scopes within functions and can cause transpiled
-scripts to break. This lesson demonstrates this and shows how to detect and fix instances.
+Destructuring means deriving variables from objects and arrays.
 
-This branch will show the following errir in Chrome console when run:
+for example:
 
-`main.bundle.js:7 Uncaught ReferenceError: monthlyRate is not defined
-     at calculateMonthlyPayment (main.bundle.js:7)
-     at HTMLButtonElement.<anonymous> (main.bundle.js:15)`
+`return {principal, years, rate, monthlyPayment, monthlyRate};`
+
+This is a shorthand for the following ECMAScript 5 syntax:
+
+`return { principal: principal, 
+         years: years, 
+         rate: rate, 
+         monthlyPayment: monthlyPayment, 
+         monthlyRate: monthlyRate };`
