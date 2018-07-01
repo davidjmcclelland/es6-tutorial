@@ -1,1 +1,6 @@
 .idea
+build/
+es6-tutorial.iml
+es6-tutorial.ipr
+es6-tutorial.iws
+node_modules/
