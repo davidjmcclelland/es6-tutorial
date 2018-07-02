@@ -1,19 +1,47 @@
-## ES6 Tutorial
+## ES6 Tutorial: 5-webpack
 
 Start the tutorial [here](http://ccoenraets.github.io/es6-tutorial).
 
-This branch tracks [here](https://ccoenraets.github.io/es6-tutorial/arrow-functions/).
+This branch tracks [here](https://ccoenraets.github.io/es6-tutorial/setup-webpack/).
 
-Arrow functions replace the function syntax with one that requires much less text.
+On the command line, make sure you are in the es6-tutorial directory and install the babel-loader and webpack modules:
 
-for example:
+`npm install babel-loader webpack --save-dev`
 
-`let calculateMonthlyPayment = (principal, years, rate) => {`
+Open package.json in your code editor, and add a webpack script (right after the babel script). The scripts section should now look like this:
 
-is replaced with
+`"scripts": {
+    "babel": "babel --presets es2015 js/main.js -o build/main.bundle.js",
+    "start": "http-server",
+    "webpack": "webpack"
+},`
 
-`let calculateMonthlyPayment = function (principal, years, rate) {`
 
-An expression body look like this:
+In the es6-tutorial directory, create a new file named `webpack.config.js` defined as follows:
 
-`amortization.forEach(month => console.log(month));`
+`var path = require("path");`
+
+`var webpack = require('webpack');`
+
+`module.exports = {
+     entry: './js/main.js',
+     output: {
+         path: path.resolve(__dirname, 'build'),
+         filename: 'main.bundle.js'
+     },
+     module: {
+         loaders: [
+             {
+                 test: /\.js$/,
+                 loader: 'babel-loader',
+                 query: {
+                     presets: ['es2015']
+                 }
+             }
+         ]
+     },
+     stats: {
+         colors: true
+     },
+     devtool: 'source-map'
+ };`
