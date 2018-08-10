@@ -8,6 +8,7 @@ This branch tracks [here](https://ccoenraets.github.io/es6-tutorial/modules/).
 
 branch: 6-modules-simpler
 
+role of default function in export.
 
 `npm run webpack`
 

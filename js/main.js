@@ -1,3 +1,3 @@
-import {add, pi} from './sum';
+import sum from './sum';
 
-console.log('2 pi = ' + add(pi, pi));
+console.log('2 + 3 = ' + sum(2, 3));
