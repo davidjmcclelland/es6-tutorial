@@ -3,17 +3,17 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        app: './js/main.js',
-        ratefinder: './js/ratefinder.js'
+        app: './src/js/main.js',
+        ratefinder: './src/js/ratefinder.js'
     },
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js'
     },
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.src$/,
                 loader: 'babel-loader',
                 query: {
                     presets: ['es2015']
